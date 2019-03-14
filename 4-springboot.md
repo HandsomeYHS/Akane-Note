@@ -32,7 +32,7 @@
 
 Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的项目**选择不同的依赖。具体参考官方文档[**表13.1。Spring Boot应用程序启动器**](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#using-boot-starter)。下面的截图列出了一部分，使用的是chrome翻译，对于翻译的准确性不做保证.
 
-![Snipaste_2019-03-14_11-10-54](.\images\Snipaste_2019-03-14_11-10-54.png)
+![Snipaste_2019-03-14_11-10-54](./images/Snipaste_2019-03-14_11-10-54.png)
 
 #### @RestController
 
