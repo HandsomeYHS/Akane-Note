@@ -1,2 +1,2 @@
 # Akane-Note
-This is my some notes, it's nothing for you.
+This is some my notes, it's nothing for you.

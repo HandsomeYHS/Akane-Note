@@ -22,9 +22,15 @@
 
 ​	自动扫描项目中的**组件**
 
+#### @AutoConfigurationPackage
+
+​	自动配置包 (注：@SpringBootApplication默认是将配置类所在的包及其子包的所有组件扫描到Spring容器)
+
 ### Spring Boot Starters启动器
 
-- Spring Boot Starters启动器用于解决依赖问题，开发不同类型的项目选择不同的依赖
+Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的项目**选择不同的依赖。具体参考官方文档[**表13.1。Spring Boot应用程序启动器**](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#using-boot-starter)。下面的截图列出了一部分，使用的是chrome翻译，对于翻译的准确性不做保证
+
+- ![1552532061199](C:\Users\chenshaoj\AppData\Roaming\Typora\typora-user-images\1552532061199.png)
 - **Spring Boot Starter Actuator**依赖关系用于监视和管理应用程序
 - **Spring Boot Starter Security**依赖项用于Spring Security
 - **Spring Boot Starter Web**依赖项用于编写Rest端点
