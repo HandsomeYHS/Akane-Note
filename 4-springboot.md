@@ -90,13 +90,119 @@ mvn package && java -jar target / spring-boot-0.1.0.jar
     	port: 4000
     ```
 
-## 二、Spring Boot yaml
-
-### YAML
+## 二、YAML
 
 #### YAML简介
 
-YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归缩写。，**以数据做为中心**
+YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归缩写。**以数据做为中心**
 
 #### YAML基本语法
 
+- 严格缩进
+
+- 不允许使用**Tab键**，只能用空格。
+
+- 空格数不重要，但是要对齐。
+
+- 大小写敏感
+
+- #表示注释
+
+- 数据结构：key-Value（支持单行写法和多行写法, 又称行内写法和多行写法）
+
+  - 对象：mapping / hashes / dictionary
+
+    ```yaml
+    server: mio
+    # 另一种写法
+    server: {name: foo, age: bar}
+    ```
+
+  - 数组：sequence / list
+
+    ```yaml
+    list:
+    	- list1
+    	- list2
+    # 另一种写法
+    list: [list1, list2]
+    ```
+
+  - 纯量：scalars
+
+    - 字符串
+
+      - 默认不使用引号
+      - 使用单引号 **''**，**会转义**
+      - 使用双引号**""**，**不会转义**
+
+      ```yaml
+      
+      ```
+
+    - 布尔值
+
+      ```yaml
+      isRed: true
+      使用true和false
+      ```
+
+    - 整数
+
+      ```yaml
+      number: 1314
+      ```
+
+    - 浮点数
+
+      ```yaml
+      number: 13.14
+      ```
+
+    - Null
+
+      ```yaml
+      parent: ~
+      比较特殊的表示，使用~符合
+      ```
+
+    - 时间
+
+      ```yaml
+      iso8601: 2001-12-14t21:59:43.10-05:00
+      使用ISO8601 格式
+      ```
+
+    - 日期
+
+      ```yaml
+      date: 2019-03-14
+      采用复合 iso8601 格式
+      ```
+
+  - 数据转换
+
+  使用两个感叹号
+
+  ```yaml
+  a: !!str 123
+  ```
+
+  - 多行字符串可以使用 `|` 保留换行符，也可以使用 `>` 折叠换行
+
+  - `+`表示保留文字块末尾的换行，`-`表示删除字符串末尾的换行
+
+  - 引用：建立锚点&，引用锚点*，<<合并到当前数据
+
+    ```yaml
+    defaults: &defaults
+      adapter:  postgres
+      host:     localhost
+    
+    development:
+      database: myapp_development
+      <<: *defaults
+    
+    ```
+
+    
