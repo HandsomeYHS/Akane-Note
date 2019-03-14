@@ -4,6 +4,8 @@
 
 详细请参考[官方文档](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#getting-started-first-application-dependencies)
 
+## 一、Spring Boot入门
+
 ### Spring Boot工作原理
 
 #### @SpringBootApplication
@@ -36,21 +38,19 @@ Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的�
 
 #### @RestController
 
-​	用于Spring MVC处理WEB请求
+​	用于Spring MVC处理WEB请求，@Controller`和`@ResponseBody的组合
 
 #### @RequestMapping
 
-​	**返回纯文本**，@RestController`组合`@Controller`和`@ResponseBody`两个注释会导致Web请求**返回数据**而**不是视图。**
+​	**返回纯文本**，@RestController`**返回数据**而**不是视图。**
 
 #### @Bean
 
-打包运行
+​	给容器添加一个组件
 
-```
-mvn package && java -jar target / spring-boot-0.1.0.jar
-```
+### 打包
 
-### 打包成jar
+1. 打包成jar
 
 *pom.xml*配置插件
 
@@ -65,5 +65,38 @@ mvn package && java -jar target / spring-boot-0.1.0.jar
 </build>
 ```
 
-### 单元测试
+2. 打包成jar
+
+```
+mvn package && java -jar target / spring-boot-0.1.0.jar
+```
+
+### 快速创建
+
+- IDEA——New Project——Sprign Initializr
+
+- 文件说明:
+
+  - staitc: 静态资源
+
+  - templates：保存所有的模板页面
+
+  - application.properties: spring配置文件，可直接修改，IDEA会提示
+
+  - **application.yml: **Spring配置文件的另一种格式、
+
+    ```yml
+    server:
+    	port: 4000
+    ```
+
+## 二、Spring Boot yaml
+
+### YAML
+
+#### YAML简介
+
+YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归缩写。，**以数据做为中心**
+
+#### YAML基本语法
 
