@@ -18,7 +18,7 @@
 
 ​	能够自动注入项目中的**依赖**
 
-![Snipaste_2019-03-14_11-08-11](.\images\Snipaste_2019-03-14_11-08-11.png)
+![Snipaste_2019-03-14_11-08-11](./images/Snipaste_2019-03-14_11-08-11.png)
 
 #### @ComponentScan
 
