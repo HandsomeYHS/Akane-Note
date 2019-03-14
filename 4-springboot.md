@@ -114,6 +114,8 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
 
     ```yaml
     server: mio
+    	name: foo
+    	age: bar
     # 另一种写法
     server: {name: foo, age: bar}
     ```
@@ -188,21 +190,110 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
   a: !!str 123
   ```
 
-  - 多行字符串可以使用 `|` 保留换行符，也可以使用 `>` 折叠换行
+  多行字符串可以使用 `|` 保留换行符，也可以使用 `>` 折叠换行
 
-  - `+`表示保留文字块末尾的换行，`-`表示删除字符串末尾的换行
+  `+`表示保留文字块末尾的换行，`-`表示删除字符串末尾的换行
 
-  - 引用：建立锚点&，引用锚点*，<<合并到当前数据
+  引用：建立锚点&，引用锚点*，<<合并到当前数据
 
-    ```yaml
-    defaults: &defaults
-      adapter:  postgres
-      host:     localhost
-    
-    development:
-      database: myapp_development
-      <<: *defaults
-    
-    ```
+  ```yaml
+  defaults: &defaults
+    adapter:  postgres
+    host:     localhost
+  
+  development:
+    database: myapp_development
+    <<: *defaults
+  
+  ```
 
-    
+- 例子
+
+  ```yaml
+  person:
+    name: Akane
+    age: 233
+    birth: 2019/03/14
+    girlFriend: true
+    map: {k1: v1, k2: 2}
+    list:
+      - eat
+      - shop
+    girl:
+      name: YTing
+      age: 18
+  ```
+
+## 三、Spring Boot配置
+
+#### 从application.yml或application.properties自动配置
+
+- 在pom.xml中配置处理器
+
+- IDEA——Enalbe annotation processing
+- 配置bean```@ConfigurationProperties(prefix = "person")```
+- 配置applicatjon.yml
+- 单元测试
+
+解决properties乱码问题：
+
+```
+Settings——File encodings——Transparent native-to-ascii conversion
+```
+
+#### @Value("")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
