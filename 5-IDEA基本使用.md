@@ -4,7 +4,7 @@
 
 - Ctrl + O: Code | Override Methods. 快速重写
 - Ctrl + I: Code | Implement Methods.快速实现接口方法
-- Alt + Enter: Mutiple choices 多个选择
+- Alt + Enter: Mutiple choices 自动导包
 - Alt + Insert: Code | Generate, easily to generate getter and setter or others.快速生成getter或其他
 - Ctrl + Shift + T: To catch exceptions.快速捕获， if ， try ，switch
 - Ctrl + /: comment like //.....
@@ -16,6 +16,9 @@
 - Ctrl + Alt + L: 格式化
 - F2 / Shift + F2: 快速跳转到方法
 - Ctrl + J: comlete and valid Live Template abbreviation.快速注释
+- Ctrl + Shift +上下箭头: 移动代码块
+- Alt + Shift +上下箭头: 移动代码
+- Ctrl + Shift +左右: 返回上次浏览的位置
 
 ### 查找
 

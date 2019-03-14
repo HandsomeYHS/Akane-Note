@@ -305,7 +305,14 @@ public class MyAppConfig {
 
 ```
 
+#### 配置文件占位符
 
+在application.properties文件中配置
+
+```properties
+person.age=${random.int} # 随机数
+person.name=Akane${person.age} #占位符
+```
 
 #### Spring Boot Log
 
@@ -328,8 +335,6 @@ public class MyAppConfig {
   ```
   2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
   ```
-
-  
 
 ## 四、Spring Boot构建RESTful Web服务
 
