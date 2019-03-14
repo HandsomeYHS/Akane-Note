@@ -48,6 +48,10 @@ Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的�
 
 ​	给容器添加一个组件
 
+#### Spring Boot运行器
+
+
+​	应用程序运行器(Runner)和命令行Runner接口允许在Spring Boot应用程序启动后执行代码。可以使用这些接口在应用程序启动后立即执行一些操作。 如ApplicationRunner 和CommandLineRunner 接口。
 ### 打包
 
 1. 打包成jar
@@ -81,9 +85,9 @@ mvn package && java -jar target / spring-boot-0.1.0.jar
 
   - templates：保存所有的模板页面
 
-  - application.properties: spring配置文件，可直接修改，IDEA会提示
+  - application.properties: **spring配置文件**，可直接修改，IDEA会提示
 
-  - **application.yml: **Spring配置文件的另一种格式、
+  - **application.yml: **Spring配置文件的另一种格式。Spring Boot支持基于YAML的属性配置来运行应用程序。可以使用application.yml文件代替application.properties。
 
     ```yml
     server:
@@ -226,7 +230,7 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
 
 ## 三、Spring Boot配置
 
-#### 从application.yml或application.properties自动配置
+#### 从application.yml或application.properties读取属性值自动配置注入
 
 - 在pom.xml中配置处理器
 
@@ -241,11 +245,65 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
 Settings——File encodings——Transparent native-to-ascii conversion
 ```
 
-#### @Value("")
+#### @Value("")与@ConfigurationProperties(prefix = "")的比较
 
+@Value标注在属性上，@ConfigurationProperties标注在类上并且批量注入
 
+|                |              |                                       |
+| -------------- | ------------ | ------------------------------------- |
+|                | Value("")    | @ConfigurationProperties(prefix = "") |
+| 功能           | 一个一个指定 | 批量                                  |
+| 松散绑定       | 不支持       | 支持                                  |
+| SpEL           | 支持         | 不支持                                |
+| JSR303数据校验 | 不支持       | 支持                                  |
+| 复杂类型封装   | 不支持       | 支持                                  |
 
+```java
+//@Value("${person.name}")
+private String name;
+// JSR303数据校验
+@Email
+private String email;
+@Value("#{10*10}")
+private Integer age;
+```
 
+#### @PropertySource()与@ImportResource
+
+@PropertySource(): 加载指定的配置文件
+
+```
+@PropertySource(value = "classpath:person.properties")
+@Component // 添加到组件中
+@ConfigurationProperties(prefix = "person")
+public class Person {
+```
+
+@ImportResource: 导入Spring配置文件，让配置文件内容生效。(Spring Boot没有spring 配置文件，我们自己写的也不自动导入)
+
+```java
+@ImportResource(locations = "classpath:")
+@SpringBootApplication
+public class SpringdemoApplication implements ApplicationRunner {	
+```
+
+SpringBoot推荐做法
+
+```java
+// 标明是一个配置类
+@Configuration
+public class MyAppConfig {
+
+    /**
+     * 将方法的返回值添加到容器中，并且方法名就是id
+     */
+    @Bean
+    public HelloService helloService() {
+        return new HelloService();
+    }
+}
+
+```
 
 
 
