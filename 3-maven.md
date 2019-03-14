@@ -1,4 +1,4 @@
-### Maven
+# Maven
 基于Java的攻击，使用POM (Project Object Model基于项目对象模型)，管理项目的构建，报告和文档等步骤。(需配置JDK和环境变量)
 
 ### 功能
@@ -51,7 +51,7 @@
 ```
 
 ### 继承式
-父（Super）POM是 Maven 默认的 POM。所有的 POM 都继承自一个父 POM（无论是否显式定义了这个父 POM）
+父（Super）POM是 Maven 默认的 POM。所有的 POM 都继承自一个父 POM（无论是否显式定义了这个父 POM）。管理所有的***版本**依赖
 ```
  <parent>
         <!--被继承的父项目的构件标识符 -->
@@ -76,7 +76,7 @@
 - validate 验证
 - compile 编译
 - test 测试
-- package 打装
+- package 打包
 - verify 检查，对集成测试的结果检查，保证质量
 - install 安装
 - deploy 部署
