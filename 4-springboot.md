@@ -307,15 +307,80 @@ public class MyAppConfig {
 
 
 
+#### Spring Boot Log
 
+默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
 
+- 提供日志日期和时间的日期和时间。
 
+- 日志级别显示有：INFO，ERROR或WARN。
 
+- 进程ID。
 
+- `---`是一个分隔符。
 
+- 线程名称括在方括号`[]`中。
 
+- 记录器名称，显示源类名称。
 
+- 日志消息。
 
+  ```
+  2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+  ```
+
+  
+
+## 四、Spring Boot构建RESTful Web服务
+
+1. 配置*pom.xml*，添加*spring-boot-starter-web*启动器
+
+#### @RestController——Rest控制器
+
+​	作用：定义RESTful Web服务，@Controller`和`@ResponseBody的组合
+
+#### @RequestMapping——请求映射
+
+​	作用：用于定义访问REST端点的Request URI
+
+```java
+RequestMapping(value = "/getNotice", method = RequestMethod.GET)
+```
+
+#### @RequestBody——请求主体
+
+​	作用：用于定义请求返回的内容类型
+
+#### @PathVariable——路径变量
+
+​	作用：用于定义自定义或动态请求URI。 请求URI中的Path变量定义为花括号`{}`
+
+```java
+    @RequestMapping("/{name}")
+    public String index(@PathVariable("name") String name) {
+        return "Hello ! " + name;
+    }
+```
+
+#### @RequestParam——请求参数
+
+​	作用：用于从请求URL读取请求参数
+
+```java
+@RequestMapping(value = "/upLoadAvatar", method = RequestMethod.POST)
+	public String uploadAvatarImg(@RequestParam(value = "id") Integer id,
+			@RequestParam(value = "upload-avatar") MultipartFile avatarFile, HttpServletRequest request) {
+```
+
+#### HTTP请求方法
+
+GET API: 默认.  method = RequestMethod.GET
+
+POST API:  用于创建资源.  method = RequestMethod.POST
+
+PUT API: 用于更新现有资源.  method = RequestMethod.PUT
+
+DELETE API: 用于删除现有资源. method = RequestMethod.DELETE
 
 
 
