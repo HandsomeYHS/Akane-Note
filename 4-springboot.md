@@ -471,7 +471,7 @@ DELETE API: 用于删除现有资源. method = RequestMethod.DELETE
 
 ## 五、Spring Boot Log
 
-默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
+Spring Boot使用Apache Commons日志记录进行所有内部日志记录。默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
 
 ```xml
 logging.path=/user/local/log
@@ -498,13 +498,29 @@ logging.level.org.hibernate=ERROR
   2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
   ```
 
-#### 
+#### 日志框架
 
+Spring Boot的默认配置支持使用Java Util Logging，Log4j2和Logback。
 
+**1. 开发中使用SFL4J**
 
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class HelloWorld {
+  public static void main(String[] args) {
+    Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+    logger.info("Hello World");
+  }
+}
+```
 
+2. 导包
 
+![](/images/concrete-bindings.png)
+
+3. 编写配置文件
 
 
 
