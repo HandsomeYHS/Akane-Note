@@ -1,6 +1,8 @@
 # Maven
 基于Java的攻击，使用POM (Project Object Model基于项目对象模型)，管理项目的构建，报告和文档等步骤。(需配置JDK和环境变量)
 
+[TOC]
+
 ### 功能
 - 构建
 - 文档生成

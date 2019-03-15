@@ -4,6 +4,8 @@
 
 详细请参考[官方文档](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#getting-started-first-application-dependencies)
 
+[TOC]
+
 ## 一、Spring Boot入门
 
 ### Spring Boot工作原理
