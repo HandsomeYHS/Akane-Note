@@ -48,7 +48,7 @@ Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的�
 
 #### @Bean
 
-​	给容器添加一个组件
+​	给容器添加一个组件，将方法的返回值添加到容器中，并且方法名就是id
 
 #### Spring Boot运行器
 
@@ -71,7 +71,7 @@ Spring Boot Starters启动器用于解决依赖问题，开发**不同场景的�
 </build>
 ```
 
-2. 打包成jar
+2. 打包成jar并运行
 
 ```
 mvn package && java -jar target / spring-boot-0.1.0.jar
@@ -232,7 +232,7 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
 
 ## 三、Spring Boot配置文件
 
-application.properties为Spring Boot的配置文件，里面包含了spring的很多配置信息，可以在这里直接修改配置信息
+application.properties为Spring Boot的配置文件，里面包含了spring的很多配置信息，可以在这里直接修改配置信息。里面能够配置的信息，来源于properties类
 
 #### 从application.yml或application.properties读取属性值自动配置注入
 
@@ -293,6 +293,14 @@ spring:
 
 ![](/images/Snipaste_2019-03-15_10-26-06.png)
 
+方法四：
+
+用命令行的方式，优先级最高
+
+```
+java -jar /xxx.jar --spring.profiles.active= 
+```
+
 
 
 #### spring.config.location=——Spring Boot配置文件的加载顺序
@@ -301,24 +309,17 @@ spring:
 # 注: file:./为application.properties所在的目录
 file:./config/
 file:./
+# 注： classpath:./为项目的根路径，即项目名所在的路径
 classpath:./config/
 classpath:./
-优先级由高到低
+优先级由高到低，高优先级的会覆盖低的
 ```
 
-
+当然，你也可以手动设置
 
 ```xml
 spring.config.location=
 ```
-
-
-
-
-
-
-
-
 
 
 
@@ -396,6 +397,21 @@ person.name=Akane${person.age} #占位符
 person.name=Akane${person.hello:hello} #如果没有可以使用:指定默认值
 ```
 
+#### @Conditionnal派生注解
+
+**自动配置类必须在一定的条件下才能生效**
+
+```properties
+# 在application.properties可以用debug属性，用于查看哪些自动配置类生效
+debug=true
+```
+
+conditionnal: 有条件的
+
+prefix: 前缀，字首
+
+
+
 #### Spring Boot Log
 
 默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
@@ -424,6 +440,12 @@ logging.level.org.hibernate=ERROR
   ```
   2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
   ```
+
+#### 重点
+
+![](/images/Snipaste_2019-03-15_11-19-39.png)
+
+
 
 ## 四、Spring Boot构建RESTful Web服务
 
