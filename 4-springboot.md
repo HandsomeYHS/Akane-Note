@@ -410,37 +410,6 @@ conditionnal: 有条件的
 
 prefix: 前缀，字首
 
-
-
-#### Spring Boot Log
-
-默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
-
-```xml
-logging.path=/user/local/log
-logging.level.com.favorites=DEBUG
-logging.level.org.springframework.web=INFO
-logging.level.org.hibernate=ERROR
-```
-
-- 提供日志日期和时间的日期和时间。
-
-- 日志级别显示有：INFO，ERROR或WARN。
-
-- 进程ID。
-
-- `---`是一个分隔符。
-
-- 线程名称括在方括号`[]`中。
-
-- 记录器名称，显示源类名称。
-
-- 日志消息。
-
-  ```
-  2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-  ```
-
 #### 重点
 
 ![](/images/Snipaste_2019-03-15_11-19-39.png)
@@ -500,9 +469,36 @@ DELETE API: 用于删除现有资源. method = RequestMethod.DELETE
 
 
 
+## 五、Spring Boot Log
 
+默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
 
+```xml
+logging.path=/user/local/log
+logging.level.com.favorites=DEBUG
+logging.level.org.springframework.web=INFO
+logging.level.org.hibernate=ERROR
+```
 
+- 提供日志日期和时间的日期和时间。
+
+- 日志级别显示有：INFO，ERROR或WARN。
+
+- 进程ID。
+
+- `---`是一个分隔符。
+
+- 线程名称括在方括号`[]`中。
+
+- 记录器名称，显示源类名称。
+
+- 日志消息。
+
+  ```
+  2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+  ```
+
+#### 
 
 
 
