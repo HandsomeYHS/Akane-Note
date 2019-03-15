@@ -230,7 +230,9 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
       age: 18
   ```
 
-## 三、Spring Boot配置
+## 三、Spring Boot配置文件
+
+application.properties为Spring Boot的配置文件，里面包含了spring的很多配置信息，可以在这里直接修改配置信息
 
 #### 从application.yml或application.properties读取属性值自动配置注入
 
@@ -246,6 +248,83 @@ YAML是"YAML Ain't a Markup Language"（YAML不是一种标记语言）的递归
 ```
 Settings——File encodings——Transparent native-to-ascii conversion
 ```
+
+#### 配置多个Profile文件
+
+可以创建多个配置文件，不同的生产环境选择不同的配置文件。默认使用application.properties
+
+![](/images/Snipaste_2019-03-15_10-13-34.png)
+
+示例如下：
+
+方法一：使用application.properties的形式
+
+```properties
+spring.profiles.active=dev
+```
+
+
+
+方法二：YAML文件使用文档块的模式的形式
+
+```yml
+server:
+  port: 8080
+spring:
+  profiles: 
+    active: test # 激活
+# ---表示文档块模式
+---
+server:
+  port: 4000
+spring:
+  profiles: production
+
+---
+server:
+  port: 9999
+spring:
+  profiles: test
+```
+
+方法三：
+
+其实在IDEA中有很好的支持显示， 手动选择即可
+
+![](/images/Snipaste_2019-03-15_10-26-06.png)
+
+
+
+#### spring.config.location=——Spring Boot配置文件的加载顺序
+
+```
+# 注: file:./为application.properties所在的目录
+file:./config/
+file:./
+classpath:./config/
+classpath:./
+优先级由高到低
+```
+
+
+
+```xml
+spring.config.location=
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
 
 #### @Value("")与@ConfigurationProperties(prefix = "")的比较
 
@@ -314,11 +393,19 @@ public class MyAppConfig {
 ```properties
 person.age=${random.int} # 随机数
 person.name=Akane${person.age} #占位符
+person.name=Akane${person.hello:hello} #如果没有可以使用:指定默认值
 ```
 
 #### Spring Boot Log
 
 默认打印在控制台，存在日志到文件可以通过*logging.file* 或*logging.path* 设置
+
+```xml
+logging.path=/user/local/log
+logging.level.com.favorites=DEBUG
+logging.level.org.springframework.web=INFO
+logging.level.org.hibernate=ERROR
+```
 
 - 提供日志日期和时间的日期和时间。
 
