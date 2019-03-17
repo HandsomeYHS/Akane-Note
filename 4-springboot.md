@@ -501,6 +501,14 @@ logging.pattern.file= # 设置保存文件的显示格式
   2019-03-14 17:16:02.001  INFO 11376 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
   ```
 
+SpringBoot日志使用和级别
+
+注: SpringBoot默认输出的是Info级别，如需要修改则到application.properties修改。
+
+![](D:/Akane-Note/images/Snipaste_2019-03-17_12-33-31.png)
+
+
+
 #### 日志框架
 
 Spring Boot的默认配置支持使用Java Util Logging，Log4j2和Logback。
@@ -525,23 +533,21 @@ public class HelloWorld {
 
 3. 编写配置文件
 
+---
+
+
+
 #### SpringBoot日志依赖关系
 
 ![](/images/Snipaste_2019-03-17_12-14-23.png)
 
-SpringBoot日志使用和级别
+#### 自定义日志配置
 
-注: SpringBoot默认输出的是Info级别，如需要修改则到application.properties修改。
+![](/images/Snipaste_2019-03-17_14-56-10.png)
 
-![](/images/Snipaste_2019-03-17_12-33-31.png)
+logback.xml：直接被日志框架识别
 
-
-
-
-
-
-
-
+**logback-spring.xml**：不直接别识别，由SpringBoot解析日志配置，可以使用SpringBoot的高级profile功能
 
 
 
