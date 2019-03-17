@@ -604,9 +604,11 @@ classpath:/META-INF/resources/",
 spring.thymeleaf
 ```
 
-SpringBoot不支持JSP模板引擎，但是支持Thymeleaf模板引擎。
+SpringBoot不支持JSP模板引擎，但是支持Thymeleaf模板引擎。Thymeleaf是一个现代服务器端Java模板引擎，适用于Web和独立环境，能够处理HTML，XML，JavaScript，CSS甚至纯文本。
 
 ## 七、Thymeleaf的基本语法和使用
+
+#### Thymeleaf的基本使用
 
 1.Thymeleaf基本配置属性
 
@@ -626,6 +628,94 @@ public class ThymeleafProperties {
 ```
 
 2.在*classpath:/templates/*文件下的HTML页面会被Thymeleaf自动渲染
+
+---
+
+
+
+#### Thymeleaf的基本语法
+
+1.导入thymeleaf的名称空间
+
+```html
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+```
+
+###### 1) th:text，改变元素里面的文本内容
+
+​	th:任意html属性
+
+| Order | Feature                         | 说明                        | Attributes                                                 |
+| :---- | :------------------------------ | --------------------------- | :--------------------------------------------------------- |
+| 1     | Fragment inclusion              | 片段包含，jsp:include       | `th:insert` <br />`th:replace`                             |
+| 2     | Fragment iteration              | 遍历，c:forEach             | `th:each`                                                  |
+| 3     | Conditional evaluation          | t条件判断，c:if             | `th:if` <br />`th:unless` <br />`th:switch`<br />`th:case` |
+| 4     | Local variable definition       | 声明变量，c:set             | `th:object`<br /> `th:with`                                |
+| 5     | General attribute modification  | 任意属性修改                | `th:attr` <br />`th:attrprepend` <br />`th:attrappend`     |
+| 6     | Specific attribute modification | 修改指定属性的默认值        | `th:value` <br />`th:href` <br />`th:src` `...`            |
+| 7     | Text (tag body modification)    | 修改标签体内容，utext不转义 | `th:text` <br />`th:utext`                                 |
+| 8     | Fragment specification          | 声明片段                    | `th:fragment`                                              |
+| 9     | Fragment removal                |                             | `th:remove`                                                |
+
+###### 2) 表达式语法
+
+**${....}**
+
+获取对象属性，还可以调用方法，使用内置基本对象，内置对象如下：
+
+- `#ctx`: the context object.
+- `#vars:` the context variables.
+- `#locale`: the context locale.
+- `#request`: (only in Web Contexts) the `HttpServletRequest` object.
+- `#response`: (only in Web Contexts) the `HttpServletResponse` object.
+- `#session`: (only in Web Contexts) the `HttpSession` object.
+- `#servletContext`: (only in Web Contexts) the `ServletContext` object.
+
+```
+Established locale country: <span th:text="${#locale.country}">US</span>.
+```
+
+***{...}**
+
+​	功能上和$一样，但是有时候更便捷
+
+```html
+  <div th:object="${session.user}">
+    <p>Name: <span th:text="*{firstName}">Sebastian</span>.</p>
+    <p>Surname: <span th:text="*{lastName}">Pepper</span>.</p>
+    <p>Nationality: <span th:text="*{nationality}">Saturn</span>.</p>
+  </div>
+```
+
+​	此时*就代表了当前父类的这个属性，就相当于下面$的作用
+
+```html
+<div>
+  <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>
+  <p>Surname: <span th:text="${session.user.lastName}">Pepper</span>.</p>
+  <p>Nationality: <span th:text="${session.user.nationality}">Saturn</span>.</p>
+</div>
+```
+
+**#{...}**
+
+​	获取国际内容
+
+**@{...}**
+
+​	定义url链接
+
+**!{...}**
+
+​	片段引用表达式
+
+###### 3) 行内写法
+
+使用 `[[...]]` or `[(...)]`
+
+```html
+<p>Hello, [[${session.user.name}]]!</p>
+```
 
 
 
