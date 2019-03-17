@@ -553,7 +553,7 @@ logback.xml：直接被日志框架识别
 
 ## 六、SpringBoot开发WEB
 
-SpringBoot简化了WEB开发，集成了很多框架，在开发一个WEB应用时，只需要如下：
+SpringBoot简化了WEB开发，集成了很多框架，SpringBoot自动配置了SpringMCVC。在开发一个WEB应用时，只需要如下：
 
 1. 创建应用的时候，选择需要的模块
 2. 在配置文件*appplication.properties*配置指定的配置信息
