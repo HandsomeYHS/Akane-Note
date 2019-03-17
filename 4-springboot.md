@@ -476,8 +476,11 @@ Spring Boot使用Apache Commons日志记录进行所有内部日志记录。默�
 ```xml
 logging.path=/user/local/log
 logging.level.com.favorites=DEBUG
+logging.level.com.example=TRACE # 设置日志级别
 logging.level.org.springframework.web=INFO
 logging.level.org.hibernate=ERROR
+logging.pattern.console= # 设置控制台显示的格式
+logging.pattern.file= # 设置保存文件的显示格式
 ```
 
 - 提供日志日期和时间的日期和时间。
@@ -526,7 +529,11 @@ public class HelloWorld {
 
 ![](/images/Snipaste_2019-03-17_12-14-23.png)
 
+SpringBoot日志使用和级别
 
+注: SpringBoot默认输出的是Info级别，如需要修改则到application.properties修改。
+
+![](/images/Snipaste_2019-03-17_12-33-31.png)
 
 
 
