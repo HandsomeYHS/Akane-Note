@@ -2,7 +2,7 @@
 
 基于java的开源框架，减少了人工去配置xml文件，便于快速搭建SpringWeb，用于创建微服务 (micro service)，自动配置嵌入式Tomcat。
 
-详细请参考[官方文档](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#getting-started-first-application-dependencies)
+详细教程请参考[官方文档](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#getting-started-first-application-dependencies)
 
 [TOC]
 
@@ -551,13 +551,81 @@ logback.xml：直接被日志框架识别
 
 
 
+## 六、SpringBoot开发WEB
 
+SpringBoot简化了WEB开发，集成了很多框架，在开发一个WEB应用时，只需要如下：
 
+1. 创建应用的时候，选择需要的模块
+2. 在配置文件*appplication.properties*配置指定的配置信息
+3. 编写业务
 
+#### SpringBoot对静态资源的映射规则
 
+```java
+// 负责映射管理的类
+@ConfigurationProperties(
+    prefix = "spring.resources",
+    ignoreUnknownFields = false
+)
+public class ResourceProperties {
+```
 
+配置文件中属性
 
+```yaml
+spring.resources.static-locations=
+```
 
+#### 几种映射形式
+
+1.通过WebJars导入的形式的，资源在*classpath/:META-INF/resources/webjars/*
+
+[**WebJars](https://www.webjars.org/)**: 指的是可以通过打包JAR(Java Archive)的形式引入到WEB应用程序中，并且可以基于Maven，Gradle等构建工具进行下载依赖。
+
+![](/images/Snipaste_2019-03-17_17-47-52.png)
+
+2. /**的形式可以访问当前目录的任何资源
+
+```xml
+classpath:/META-INF/resources/",
+"classpath:/resources/", 
+"classpath:/static/", 
+"classpath:/public/
+"classpath:/
+```
+
+3.配置首页，静态资源文件夹下的index.html
+
+4.站点图标，静态资源文件夹下的favicon.icon
+
+#### Thymeleaf模板引擎
+
+```properties
+spring.thymeleaf
+```
+
+SpringBoot不支持JSP模板引擎，但是支持Thymeleaf模板引擎。
+
+## 七、Thymeleaf的基本语法和使用
+
+1.Thymeleaf基本配置属性
+
+```java
+@ConfigurationProperties(
+    prefix = "spring.thymeleaf"
+)
+public class ThymeleafProperties {
+    private static final Charset DEFAULT_ENCODING;    
+	public static final String DEFAULT_PREFIX = "classpath:/templates/";
+    public static final String DEFAULT_SUFFIX = ".html";
+    private boolean checkTemplate = true;
+    private boolean checkTemplateLocation = true;
+    private String prefix = "classpath:/templates/";
+    private String suffix = ".html";
+    private String mode = "HTML";
+```
+
+2.在*classpath:/templates/*文件下的HTML页面会被Thymeleaf自动渲染
 
 
 
