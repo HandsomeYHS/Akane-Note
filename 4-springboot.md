@@ -616,7 +616,7 @@ classpath:/META-INF/resources/",
 spring.thymeleaf
 ```
 
-SpringBoot不支持JSP模板引擎，但是支持Thymeleaf模板引擎。Thymeleaf是一个现代服务器端Java模板引擎，适用于Web和独立环境，能够处理HTML，XML，JavaScript，CSS甚至纯文本。
+**SpringBoot使用的是嵌入式Servlet容器，不支持JSP模板引擎**，但是支持Thymeleaf模板引擎。Thymeleaf是一个现代服务器端Java模板引擎，适用于Web和独立环境，能够处理HTML，XML，JavaScript，CSS甚至纯文本。
 
 ## 七、Thymeleaf的基本语法和使用
 
