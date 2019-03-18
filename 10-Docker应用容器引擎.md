@@ -57,3 +57,17 @@ Docker Image(镜像)用于**创建Docker Container(容器)的模板**，打包�
 ​	docker tag ubuntu:15.10 runoob/ubuntu:v3
 
 ​	添加标签
+
+
+
+#### docker启动mysql失败问题
+
+没有指定用户名和密码
+
+```console
+$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+```
+
+## 制作自己的 Docker 容器
+
+需要编写Dockerfile文件，具体参考网上
