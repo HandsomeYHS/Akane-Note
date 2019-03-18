@@ -717,7 +717,30 @@ Established locale country: <span th:text="${#locale.country}">US</span>.
 <p>Hello, [[${session.user.name}]]!</p>
 ```
 
+---
 
 
 
+##### 配置国际化内容
+
+1）、SpringBoot中自动配置了管理国际化资源文件的组件
+
+```java
+public class MessageSourceAutoConfiguration {
+    private static final Resource[] NO_RESOURCES = new Resource[0];
+
+    public MessageSourceAutoConfiguration() {
+    }
+
+    @Bean
+    @ConfigurationProperties(
+        prefix = "spring.messages"
+    )
+```
+
+2）、使用**#{...}**获取国际内容
+
+关于乱码问题：properties文件最后需要转换为ascii码，所以需要将IDEA转换为自动转换为ascii。setting——file Encoding
+
+![](/images/Snipaste_2019-03-18_09-14-59.png)	
 
