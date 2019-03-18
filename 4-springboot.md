@@ -467,6 +467,18 @@ PUT API: 用于更新现有资源.  method = RequestMethod.PUT
 
 DELETE API: 用于删除现有资源. method = RequestMethod.DELETE
 
+```java
+//  REST风格的Mapping，底层其实就是method = RequestMethod.PUT
+	@PostMapping
+    @GetMapping
+	@DeleteMapping
+	@PutMapping
+```
+
+
+
+
+
 
 
 ## 五、Spring Boot Log
@@ -743,4 +755,60 @@ public class MessageSourceAutoConfiguration {
 关于乱码问题：properties文件最后需要转换为ascii码，所以需要将IDEA转换为自动转换为ascii。setting——file Encoding
 
 ![](/images/Snipaste_2019-03-18_09-14-59.png)	
+
+##### Thymeleaf设置公共页面元素
+
+```HTML
+    <!-- 声明片段-->
+	<div th:fragment="copy">
+      &copy; 2011 The Good Thymes Virtual Grocery
+    </div>
+    <!-- 引入片段-->
+    <div th:insert="~{footer :: copy}"></div> 模板名：片段名
+```
+
+​	    
+
+
+
+## 八、SpringBoot开发WEB的一些问题
+
+1）、自定义区域信息解析器：
+
+通过实现LocaleResolver，并@Bean添加到组件中即可
+
+```JAVA
+public class MyLocaleResolver implements LocaleResolver {
+    @Override
+    public Locale resolveLocale(HttpServletRequest httpServletRequest) {
+        Locale locale = Locale.getDefault();
+        String language = httpServletRequest.getParameter("l");
+        if(!language.isEmpty()){
+            String[] split = language.split("_");
+            locale = new Locale(split[0], split[1]);
+        }
+
+        return locale;
+    }
+```
+
+2）、开发的过程，可以禁用Thymeleaf模板缓存，实时生效。修改配置后重新编译
+
+```properties
+spring.thymlaef.cache=false
+```
+
+3）、防止重复提交表单，设置为重定向
+
+4）、自定义映射规则
+
+```java
+WebMvcAutoConfigurationAdapter
+```
+
+5）、拦截器
+
+```java
+HandlerInterceptor
+```
 
