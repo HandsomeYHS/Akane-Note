@@ -655,7 +655,7 @@ public class ThymeleafProperties {
 
 ###### 1) th:text，改变元素里面的文本内容
 
-​	th:任意html属性
+​	th:任意html属性。th：thymeleaf
 
 | Order | Feature                         | 说明                        | Attributes                                                 |
 | :---- | :------------------------------ | --------------------------- | :--------------------------------------------------------- |
@@ -764,10 +764,25 @@ public class MessageSourceAutoConfiguration {
       &copy; 2011 The Good Thymes Virtual Grocery
     </div>
     <!-- 引入片段-->
-    <div th:insert="~{footer :: copy}"></div> 模板名：片段名
+    <div th:insert="~{footer :: copy}">	</div> 模板名：片段名
+三种不同方式
+  <div th:insert="footer :: copy"></div>
+
+  <div th:replace="footer :: copy"></div>
+
+  <div th:include="footer :: copy"></div>
 ```
 
-​	    
+##### 	   REST风格的请求
+
+```html
+    <form th:action="@{/emp/}+${emp.id}" method="post">
+        <input type="hidden" name="_method" method="delete"/>
+        <button type="submit">删除</button>
+    </form>
+```
+
+
 
 
 
