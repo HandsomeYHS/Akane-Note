@@ -827,3 +827,13 @@ WebMvcAutoConfigurationAdapter
 HandlerInterceptor
 ```
 
+## 九、SpringData
+
+SpringData为我们提供了统一的API来对数据访问层进行操作
+
+#### JPA
+
+Java Persistence API，Java持久层API
+
+![](/images/Snipaste_2019-03-19_14-47-04.png)
+
