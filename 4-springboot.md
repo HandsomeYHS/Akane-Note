@@ -837,3 +837,6 @@ Java Persistence API，Java持久层API
 
 ![](/images/Snipaste_2019-03-19_14-47-04.png)
 
+## 十、SpringBoot启动顺序
+
+断点查看
