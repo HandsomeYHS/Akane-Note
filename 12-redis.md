@@ -121,7 +121,69 @@ zadd key 下标 value
 
 ```
 
+#### Redis HyperLogLog
+
+> Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。
+
+关键字：pfadd
 
 
 
+#### Redis订阅
+
+一种消息通信模式，关键字：public发布者、subscribe订阅者
+
+```
+# 创建频道,用于接收
+subscribe channel [channel ...]
+# 发送频道
+publish channel message
+# 注：由于是不同的用户，需要打开两个客户端进行测试
+
+```
+
+#### Redis 事务
+
+Redis 事务可以一次执行多个命令，遵从以下原则：
+
+- 批量操作在发送 EXEC 命令前被放入队列缓存。
+- 收到 EXEC 命令后进入事务执行，事务中**任意命令执行失败，其余的命令依然被执行**。
+- 在事务**执行过程**，**其他客户端**提交的**命令请求不会插入到事务**执行命令序列中。
+
+关键字：事务开始multi、执行所有事务块exec
+
+**如果中间出现了失败，已经执行的不会回滚，后面的依然被执行**
+
+
+
+#### Redis脚本
+
+Redis 脚本使用 Lua 解释器来执行脚本
+
+关键字：eval
+
+```
+eval script numkeys key [key ...] arg [arg ...]
+例如：
+EVAL "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 key1 key2 first second
+```
+
+#### Redis分区
+
+> ### 哈希分区
+>
+> 另外一种分区方法是hash分区。这对任何key都适用，也无需是object_name:这种形式，像下面描述的一样简单：
+>
+> - 用一个hash函数将key转换为一个数字，比如使用crc32 hash函数。对key foobar执行crc32(foobar)会输出类似93024922的整数。
+> - 对这个整数取模，将其转化为0-3之间的数字，就可以将这个整数映射到4个Redis实例中的一个了。93024922 % 4 = 2，就是说key foobar应该被存到R2实例中。注意：取模操作是取除的余数，通常在多种编程语言中用%操作符实现。
+
+#### Java使用Redis
+
+使用[ **jedis.jar**](https://mvnrepository.com/artifact/redis.clients/jedis)即可
+
+```
+// 连接Redis服务
+Jedis jedis = new Jedis("localhost");
+// 之后即可进行相关操作
+```
 
