@@ -29,11 +29,13 @@ RabbitMQ 即一个消息队列，主要是用来实现应用程序的**异步和
 
 ![](/images/rabbitMQ.png)
 
-publisher(消息生产者)——>Exchange(交换器)——>Binding(绑定)——>Queue(消息队列)——>conneciton(连接)——>Consumer(消息消费者)
+publisher(消息生产者)——>Broker(消息都列服务器)——>Exchange(交换器)——>Binding(绑定)——>Queue(消息队列)——>conneciton(连接)——>Consumer(消息消费者)
 
 
 
 vhost：虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 / 。
+
+
 
 Exchange(交换器)：用于将消息传到队列中
 
