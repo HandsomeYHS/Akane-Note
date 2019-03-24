@@ -4,7 +4,7 @@
 
 
 
-> CAS是Central Authentication Service的缩写，中央认证服务，一种独立开放指令协议。CAS 是 [Yale](https://baike.baidu.com/item/Yale/10754982) 大学发起的一个开源项目，旨在为 Web 应用系统提供一种可靠的单点登录方法，CAS 在 2004 年 12 月正式成为 JA-SIG 的一个项目。
+> CAS是Central Authentication Service的缩写，**中央认证服务**，一种独立开放指令协议。CAS 是 [Yale](https://baike.baidu.com/item/Yale/10754982) 大学发起的一个开源项目，旨在为 Web 应用系统提供一种可靠的单点登录方法，CAS 在 2004 年 12 月正式成为 JA-SIG 的一个项目。
 
 
 
@@ -20,4 +20,12 @@
 
 安装证书
 
-使用keytool，内部证书，外部证书，服务器和客户端证书
+使用keytool，内部证书、外部证书（服务器和客户端证书）
+
+
+
+cas shiro
+
+1.  shiro本身通过继承realm的方式来进行登录认证 当接入cas后 则**通过cas-server来进行登录认证** 详见org.apache.shiro.cas.CasRealm
+2.  通过shiroFilter来对请求路径的登录状态验证 详见org.apache.shiro.cas.CasFilter
+
