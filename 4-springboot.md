@@ -717,7 +717,7 @@ Established locale country: <span th:text="${#locale.country}">US</span>.
 
 ​	定义url链接
 
-**!{...}**
+**~{...}**
 
 ​	片段引用表达式
 
