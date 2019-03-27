@@ -25,3 +25,7 @@ A：验证类版本的标识，用于序列化和反序列化中的对接。如�
  因此，为了保证跨不同java编译器实现的一致的serialVersionUID值，可序列化类必须声明显式的serialVersionUID值。
 ```
 
+
+
+
+
