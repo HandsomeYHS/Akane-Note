@@ -38,7 +38,7 @@
 
 ### TkMybatis
 
-好处:基于注解，无需编写xml文件
+好处: 基于注解，无需编写xml文件
 
 #### 基本使用
 
@@ -74,3 +74,11 @@
 
    2.  在Mapper接口中配置@Mapper注解，或者在Application类配置@MapperScan注解扫描Mapper接口。并且在Mapper接口中继承tk.mybatis.mapper.common.Mappe和MysqlMapper.
    3. 无需编写Mapper.xml，直接测试即可
+
+Q: 关于Mapper层中@Param的作用
+
+```
+Person get(@Param("id")Integer id);
+```
+
+A: 为了传递多个参数，解决的是可读性和直观性

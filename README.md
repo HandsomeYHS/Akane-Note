@@ -1,2 +1,5 @@
 # Akane-Note
-This is some my notes, it's nothing for you.
+一些简单的个人笔记，包含技术学习的笔记，遇到的一些bug见`[19-毁灭吧, bug.md]`
+
+对于学习路线首先并没有明确的说明，默认有Spring、SpringMVC、Mybatis的基础，之后的学习路线就请参考`[0-学习内容.md]`，需要配置的环境和工具也在`[2-开发环境配置]`
+
